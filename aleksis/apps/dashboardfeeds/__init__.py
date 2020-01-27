@@ -5,4 +5,4 @@ try:
 except Exception:
     __version__ = "unknown"
 
-default_app_config = "aleksis.apps.dashboardfeeds.apps.DefaulConfig"
+default_app_config = "aleksis.apps.dashboardfeeds.apps.DefaultConfig"

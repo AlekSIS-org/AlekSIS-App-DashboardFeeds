@@ -21,6 +21,7 @@ def get_widgets(request):
     for widget in widgets:
         feed = widget.widget.get_feed()
 
-        widgets_to_return.append(render_to_string(widget.widget.template, feed, request))
+        # widgets_to_return.append(render_to_string(widget.widget.template, feed, request))
+        widgets_to_return.append((widget.widget.template, feed))
 
     return widgets_to_return

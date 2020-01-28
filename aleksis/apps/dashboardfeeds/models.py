@@ -40,7 +40,7 @@ class DashboardWidget(models.Model):
 #
 #     # https://wordpress.org/support/article/wordpress-feeds/#finding-your-feed-url
 #
-#     def get_feed(self):
+#     def get_context(self):
 #         feed = {
 #             "title": self.widget.title,
 #             "active": self.widget.active,
@@ -60,7 +60,7 @@ class RSSFeedWidget(models.Model):
                                   on_delete=models.CASCADE)
     url = models.URLField(verbose_name=_("RSS Url"))
 
-    def get_feed(self):
+    def get_context(self):
         result = feedparser.parse(self.url)["entries"][0]
         rich_text, img_href = parse_rss_html(result["summary"])
         img_href = img_href if img_href else result["enclosures"][0]["href"]

@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 
 
 def parse_rss_html(rss_html: str) -> (str, str):
-    soup = BeautifulSoup(rss_html)
+    soup = BeautifulSoup(rss_html, features="html.parser")
 
     rich_text = soup.get_text()
     img_href = soup.img

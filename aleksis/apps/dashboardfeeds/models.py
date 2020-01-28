@@ -6,6 +6,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 import feedparser
+from .html_helper import parse_rss_html
 
 from constance import config
 
@@ -60,12 +61,17 @@ class RSSFeedWidget(models.Model):
     url = models.URLField(verbose_name=_("RSS Url"))
 
     def get_feed(self):
+        result = feedparser.parse(self.url)["entries"][0]
+        rich_text, img_href = parse_rss_html(result["summary"])
+        img_href = img_href if img_href else result["enclosures"][0]["href"]
         feed = {
             "title": self.widget.title,
             "active": self.widget.active,
             "url": self.url,
             "base_url": self.widget.base_url,
-            "result": feedparser.parse(self.url)["entries"][0],
+            "result": result,
+            "img_href": img_href,
+            "rich_text": rich_text,
         }
         return feed
 

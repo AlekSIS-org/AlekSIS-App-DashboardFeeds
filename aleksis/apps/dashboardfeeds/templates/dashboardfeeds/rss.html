@@ -5,12 +5,12 @@
     <div class="card-image">
       <span class="badge-image z-depth-2">{{ d_widget.title }}</span>
       {#    <img src="{{ result.enclosures.0.href }}" alt="{{ title }} – {% trans "title image" %}">#}
-      <img src="{{ d_widget.result.enclosures.0.href }}" alt="{{ d_widget.title }} – {% trans "title image" %}"
+      <img src="{{ d_widget.img_href }}" alt="{{ d_widget.title }} – {% trans "title image" %}"
            onerror="this.src='{% static "dashboardfeeds/image_not_found.png" %}'; "/>
     </div>
     {# THIS DOSEN'T WOKR! #}
     <div class="card-content"><span class="card-title">{{ d_widget.result.title }}</span>
-      {{ d_widget.result.summary|safe }}
+      {{ d_widget.rich_text }}
     </div>
     <div class="card-action">
       <a href="{{ d_widget.result.link }}" target="_blank">Mehr lesen</a>

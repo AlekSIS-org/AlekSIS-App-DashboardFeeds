@@ -23,10 +23,10 @@ class RSSFeedWidget(DashboardWidget):
         rich_text, img_href = parse_rss_html(result["summary"])
         img_href = img_href if img_href else result["enclosures"][0]["href"]
         feed = {
-            "title": self.widget.title,
-            "active": self.widget.active,
+            # "title": self.widget.title,
+            # "active": self.widget.active,
             "url": self.url,
-            "base_url": self.widget.base_url,
+            # "base_url": self.widget.base_url,
             "result": result,
             "img_href": img_href,
             "rich_text": rich_text,

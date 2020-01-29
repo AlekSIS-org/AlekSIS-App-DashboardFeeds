@@ -4,6 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 import feedparser
 
+from django.db import models
+
 from aleksis.core.models import DashboardWidget
 
 from .util.html_helper import parse_rss_html

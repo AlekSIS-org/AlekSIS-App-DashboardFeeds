@@ -4,11 +4,12 @@
   <div class="card">
     <div class="card-image">
       <span class="badge-image z-depth-2">{{ d_widget.title }}</span>
-      {#    <img src="{{ result.enclosures.0.href }}" alt="{{ title }} – {% trans "title image" %}">#}
-      <img src="{{ d_widget.img_href }}" alt="{{ d_widget.title }} – {% trans "title image" %}"
-           onerror="this.src='{% static "dashboardfeeds/image_not_found.png" %}'; "/>
+      {% if d_widget.img_href %}
+        <img src="{{ d_widget.img_href }}" alt="{{ d_widget.title }} – {% trans "title image" %}" />
+      {% else %}
+        <img src="{% static "dashboardfeeds/image_not_found.png" %}" alt="{{ d_widget.title }} – no feed image" />
+      {% endif %}
     </div>
-    {# THIS DOSEN'T WOKR! #}
     <div class="card-content"><span class="card-title">{{ d_widget.result.title }}</span>
       {{ d_widget.rich_text }}
     </div>
@@ -16,7 +17,8 @@
       <a href="{{ d_widget.result.link }}" target="_blank">Mehr lesen</a>
     </div>
   </div>
-  <a class="btn hundred-percent primary-color" href="{{ d_widget.base_url }}" target="_blank">Weitere Artikel
+  <a class="btn hundred-percent primary-color" href="{{ d_widget.base_url }}" target="_blank">
+    {% trans "Further articles" %}
     <i class="material-icons right">arrow_forward</i>
   </a>
 </div>

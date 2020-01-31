@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "AlekSIS-App-DashboardFeeds"
-version = "1.0"
+version = "2.0a1"
 packages = [
     { include = "aleksis" }
 ]
 readme = "README.rst"
+include = ["CHANGELOG.rst", "LICENCE.rst"]
 
 description = "AlekSIS (School Information System) — App Dashboard Feeds (Include feeds from external resources as widgets on dashboard)"
 authors = ["Julian Leucker <leuckerj@gmail.com>"]
@@ -20,7 +21,8 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-AlekSIS = { path = "../../.." }
+#AlekSIS = { path = "../../.." }
+AlekSIS = "2.0a1"
 feedparser = "^5.2.1"
 
 [build-system]

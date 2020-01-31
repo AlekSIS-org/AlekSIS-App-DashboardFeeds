@@ -21,7 +21,8 @@ class RSSFeedWidget(DashboardWidget):
     def get_context(self):
         result = feedparser.parse(self.url)["entries"][0]
         rich_text, img_href = parse_rss_html(result["summary"])
-        img_href = img_href if img_href else result["enclosures"][0]["href"] if len(result["enclosures"]) > 0 else ""
+        if not img_href:
+            img_href = result["enclosures"][0]["href"] if len(result["enclosures"]) > 0 else ""
         feed = {
             "title": self.title,
             "url": self.url,

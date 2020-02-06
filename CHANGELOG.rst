@@ -19,4 +19,4 @@ Minor changes
 
 * None
 
-_`1.0`: https://edugit.org/Teckids/AlekSIS/AlekSIS-App-DashboardFeeds/-/tags/1.0
+_`1.0`: https://edugit.org/AlekSIS/Official/AlekSIS-App-DashboardFeeds/-/tags/1.0

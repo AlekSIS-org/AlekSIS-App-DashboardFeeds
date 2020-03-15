@@ -7,6 +7,8 @@ from ics import Calendar
 from requests import RequestException
 import logging
 
+logger = logging.getLogger(__name__)
+
 
 def get_current_events(calendar: Calendar, limit: int = 5) -> list:
     """
@@ -77,7 +79,7 @@ def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
     try:
         calendar: Calendar = Calendar(requests.get(calendar_url, timeout=3).text)
     except RequestException as e:
-        logging.error(str(e))
+        logger.error(str(e))
         return cache.get("current_events", [])
 
     # Get events

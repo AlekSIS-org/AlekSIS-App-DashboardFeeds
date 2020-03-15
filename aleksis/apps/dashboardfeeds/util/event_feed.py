@@ -60,7 +60,7 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
 
 
 def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
-    if calendar_url is None or calendar_url == "":
+    if not calendar_url:
         return []
 
     # Get ICS

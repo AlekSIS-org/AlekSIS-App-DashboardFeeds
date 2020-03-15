@@ -2,6 +2,7 @@ import re
 
 import requests
 from django.utils import timezone, formats
+from django.core.cache import cache
 from ics import Calendar
 from requests import RequestException
 
@@ -63,6 +64,14 @@ def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
     if not calendar_url:
         return []
 
+    # Check if current events are cached
+    current_events = cache.get("current_events")
+    if current_events:
+        # Return the if so
+        return current_events
+
+    # Else
+
     # Get ICS
     try:
         calendar: Calendar = Calendar(requests.get(calendar_url, timeout=3).text)
@@ -71,4 +80,6 @@ def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
         return []
 
     # Get events
-    return get_current_events(calendar, limit)
+    current_events = get_current_events(calendar, limit)
+    cache.set("current_events", current_events, 60 * 5)
+    return current_events

@@ -2,14 +2,14 @@ from typing import Optional
 
 from django.utils.translation import ugettext_lazy as _
 
-import feedparser
-
 from django.db import models
 
 from aleksis.core.models import DashboardWidget
 
-from .util.html_helper import parse_rss_html
 from .util.event_feed import get_current_events_with_cal
+from feeds.models import Source
+
+import datetime
 
 
 class RSSFeedWidget(DashboardWidget):
@@ -18,19 +18,30 @@ class RSSFeedWidget(DashboardWidget):
     url = models.URLField(verbose_name=_("RSS Url"))
     base_url = models.URLField(verbose_name=_("Base URL"),
                                help_text=_("index url of the news website (as link for users)"))
+    rss_source = models.ForeignKey(Source, verbose_name=_("Rss Source"), on_delete=models.CASCADE, editable=False,
+                                   null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.rss_source:
+            source = Source()
+            source.name = self.title
+            source.feed_url = self.url
+            source.site_url = self.base_url
+
+            source.last_success = datetime.datetime.utcnow()
+            source.last_change = datetime.datetime.utcnow()
+
+            source.save()
+
+        super().save()
 
     def get_context(self):
-        result = feedparser.parse(self.url)["entries"][0]
-        rich_text, img_href = parse_rss_html(result["summary"])
-        if not img_href:
-            img_href = result["enclosures"][0]["href"] if len(result["enclosures"]) > 0 else ""
+        post = self.rss_source.posts[0]
         feed = {
             "title": self.title,
-            "url": self.url,
-            "base_url": self.base_url,
-            "result": result,
-            "img_href": img_href,
-            "rich_text": rich_text,
+            "url": self.rss_source.feed_url,
+            "base_url": self.rss_source.site_url,
+            "result": post,
         }
         return feed
 

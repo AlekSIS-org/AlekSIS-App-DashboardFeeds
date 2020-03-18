@@ -9,6 +9,7 @@ from django.db import models
 from aleksis.core.models import DashboardWidget
 
 from .util.html_helper import parse_rss_html
+from .util.event_feed import get_current_events_with_cal
 
 
 class RSSFeedWidget(DashboardWidget):
@@ -36,3 +37,23 @@ class RSSFeedWidget(DashboardWidget):
     class Meta:
         verbose_name = _("RSS Widget")
         verbose_name_plural = _("RSS Widgets")
+
+
+class ICalFeedWidget(DashboardWidget):
+    template = "dashboardfeeds/ical.html"
+
+    url = models.URLField(verbose_name=_("iCal URL"))
+    base_url = models.URLField(verbose_name=_("Base URL"),
+                               help_text=_("index url of the calendar (as link for users)"))
+    events_count = models.IntegerField(verbose_name=_("number of displayed events"), default=5)
+
+    def get_context(self):
+        feed = {
+            "base_url": self.base_url,
+            "feed_events": get_current_events_with_cal(self.url, self.events_count),
+        }
+        return feed
+
+    class Meta:
+        verbose_name = _("Ical Widget")
+        verbose_name_plural = _("Ical Widgets")

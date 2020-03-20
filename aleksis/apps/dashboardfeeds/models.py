@@ -33,10 +33,16 @@ class RSSFeedWidget(DashboardWidget):
 
             source.save()
 
+            self.rss_source = source
+
+        self.rss_source.live = self.active
+        self.rss_source.save()
+
         super().save()
 
     def get_context(self):
-        post = self.rss_source.posts[0]
+        posts = self.rss_source.posts.all().order_by("-created")
+        post = posts[0] if len(posts) > 0 else None
         feed = {
             "title": self.title,
             "url": self.rss_source.feed_url,

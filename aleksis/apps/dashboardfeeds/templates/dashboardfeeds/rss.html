@@ -1,17 +1,21 @@
-{% load i18n static %}
+{% load i18n static bleach_tags %}
 
 <div>
   <div class="card">
     <div class="card-image">
       <span class="badge-image z-depth-2">{{ title }}</span>
-      {% if img_href %}
-        <img src="{{ img_href }}" alt="{{ title }} – {% trans "title image" %}" />
+    {% with result.enclosures.all.0 as img %}
+      {% if img.type == "image/jpg" and img.href %}
+        <img src="{{ img.href }}" alt="{{ title }} – {% trans "title image" %}" />
       {% else %}
         <img src="{% static "dashboardfeeds/image_not_found.png" %}" alt="{{ title }} – no feed image" />
       {% endif %}
+    {% endwith %}
     </div>
     <div class="card-content"><span class="card-title">{{ result.title }}</span>
-      {{ rich_text }}
+      {% autoescape off %}
+        {{ result.body|bleach:"p,span,b,i,u,em,strong,a,div"|truncatewords_html:50 }}
+      {% endautoescape %}
     </div>
     <div class="card-action">
       <a href="{{ result.link }}" target="_blank">Mehr lesen</a>

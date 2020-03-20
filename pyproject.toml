@@ -25,6 +25,7 @@ AlekSIS = { path = "../../.." }
 feedparser = "^5.2.1"
 django-feed-reader = "^0.2.1"
 django-bleach = "^0.6.1"
+ics = "^0.7"
 
 [build-system]
 requires = ["poetry>=1.0"]

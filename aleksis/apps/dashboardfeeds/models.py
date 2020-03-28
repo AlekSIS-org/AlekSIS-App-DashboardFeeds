@@ -19,6 +19,7 @@ class RSSFeedWidget(DashboardWidget):
                                help_text=_("index url of the news website (as link for users)"))
     rss_source = models.ForeignKey(Source, verbose_name=_("Rss Source"), on_delete=models.CASCADE, editable=False,
                                    null=True)
+    text_only = models.BooleanField(verbose_name=_("Text Only RSS Feed"), default=False)
 
     def save(self, *args, **kwargs):
         if not self.rss_source:
@@ -47,6 +48,7 @@ class RSSFeedWidget(DashboardWidget):
             "url": self.rss_source.feed_url,
             "base_url": self.rss_source.site_url,
             "result": post,
+            "hide_image": self.text_only,
         }
         return feed
 

@@ -1,11 +1,11 @@
+import logging
 import re
 
-import requests
 from django.utils import timezone, formats
 from django.core.cache import cache
+
 from ics import Calendar
-from requests import RequestException
-import logging
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -73,14 +73,12 @@ def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
         # Return the if so
         return current_events
 
-    # Else
-
     # Get ICS
     try:
         calendar: Calendar = Calendar(requests.get(calendar_url, timeout=3).text)
-    except RequestException as e:
+    except requests.RequestException as e:
         logger.error(str(e))
-        return cache.get("current_events", [])
+        return []
 
     # Get events
     current_events = get_current_events(calendar, limit)

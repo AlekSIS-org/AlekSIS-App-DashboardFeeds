@@ -6,10 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from django.db import models
 
+from feeds.models import Source
+
 from aleksis.core.models import DashboardWidget
 
 from .util.event_feed import get_current_events_with_cal
-from feeds.models import Source
 
 
 class RSSFeedWidget(DashboardWidget):

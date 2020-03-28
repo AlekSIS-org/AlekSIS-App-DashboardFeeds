@@ -5,6 +5,7 @@ from django.utils import timezone, formats
 from django.core.cache import cache
 
 from ics import Calendar
+from memoize import memoize
 import requests
 
 logger = logging.getLogger(__name__)
@@ -63,24 +64,14 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
     return events
 
 
+@memoize(timeout=300)
 def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
-    if not calendar_url:
-        return []
-
-    # Check if current events are cached
-    current_events = cache.get("current_events")
-    if current_events:
-        # Return the if so
-        return current_events
-
-    # Get ICS
     try:
-        calendar: Calendar = Calendar(requests.get(calendar_url, timeout=3).text)
+        content = requests.get(calendar_url, timeout=3)
     except requests.RequestException as e:
         logger.error(str(e))
         return []
 
-    # Get events
-    current_events = get_current_events(calendar, limit)
-    cache.set("current_events", current_events, 60 * 5)
-    return current_events
+    calendar: Calendar = Calendar(content.text)
+
+    return get_current_events(calendar, limit)

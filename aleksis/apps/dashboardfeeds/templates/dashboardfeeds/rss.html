@@ -18,7 +18,7 @@
           {% if img.type == "image/jpg" and img.href %}
             <img src="{{ img.href }}" alt="{{ title }} – {% trans "title image" %}"/>
           {% else %}
-            <img src="{% static "dashboardfeeds/image_not_found.png" %}" alt="{{ title }} – no feed image"/>
+            <img src="{% static "dashboardfeeds/image_not_found.png" %}" alt="{{ title }} – {% trans "no feed image" %}"/>
           {% endif %}
         {% endwith %}
       </div>

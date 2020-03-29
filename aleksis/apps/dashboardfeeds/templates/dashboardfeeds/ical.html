@@ -7,6 +7,10 @@
       <div class="card-panel event-card">
         <span class="title">{{ event.name }}</span><br>{{ event.date_formatted }}
       </div>
+    {% empty %}
+      <div class="card-panel event-card">
+        <span class="title">{% trans "No events to display" %}</span>
+      </div>
     {% endfor %}
   </div>
   <div class="card-action">

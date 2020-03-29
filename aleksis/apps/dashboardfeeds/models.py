@@ -47,6 +47,7 @@ class RSSFeedWidget(DashboardWidget):
             "title": self.title,
             "url": self.rss_source.feed_url,
             "base_url": self.rss_source.site_url,
+            "base_image": self.rss_source.image_url,
             "result": post,
             "hide_image": self.text_only,
         }

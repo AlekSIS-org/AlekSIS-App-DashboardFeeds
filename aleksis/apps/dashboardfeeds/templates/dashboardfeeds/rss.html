@@ -16,7 +16,9 @@
         <span class="badge-image z-depth-2">{{ title }}</span>
         {% with result.enclosures.all.0 as img %}
           {% if img.type == "image/jpg" and img.href %}
-            <img src="{{ img.href }}" alt="{{ title }} – {% trans "title image" %}"/>
+            <img src="{{ img.href }}" alt="{{ result.title }} – {% trans "title image" %}"/>
+          {% elif base_image %}
+            <img src="{{ base_image }}" alt="{{ title }} – {% trans "title image" %}"/>
           {% else %}
             <img src="{% static "dashboardfeeds/image_not_found.png" %}" alt="{{ title }} – no feed image"/>
           {% endif %}

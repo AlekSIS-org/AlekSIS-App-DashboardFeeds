@@ -8,14 +8,14 @@
         <span class="title">{{ event.name }}</span><br>{{ event.date_formatted }}
       </div>
     {% empty %}
-      <div class="card-panel event-card">
-        <span class="title">{% trans "No events to display" %}</span>
-      </div>
+      <span>{% trans "No events to display" %}</span>
     {% endfor %}
   </div>
+  {% if feed_events %}
   <div class="card-action">
     <a href="{{ base_url }}" target="_blank">
       {% trans "Further events" %}
     </a>
   </div>
+  {% endif %}
 </div>

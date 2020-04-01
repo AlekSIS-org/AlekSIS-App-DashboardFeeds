@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 17:58+0100\n"
+"POT-Creation-Date: 2020-04-01 13:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,43 +17,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:18
+#: models.py:17
 msgid "RSS Url"
 msgstr ""
 
-#: models.py:19 models.py:46
+#: models.py:18 models.py:65
 msgid "Base URL"
 msgstr ""
 
-#: models.py:20
+#: models.py:19
 msgid "index url of the news website (as link for users)"
 msgstr ""
 
-#: models.py:38
+#: models.py:20
+msgid "Rss Source"
+msgstr ""
+
+#: models.py:22
+msgid "Text Only RSS Feed"
+msgstr ""
+
+#: models.py:57
 msgid "RSS Widget"
 msgstr ""
 
-#: models.py:39
+#: models.py:58
 msgid "RSS Widgets"
 msgstr ""
 
-#: models.py:45
+#: models.py:64
 msgid "iCal URL"
 msgstr ""
 
-#: models.py:47
+#: models.py:66
 msgid "index url of the calendar (as link for users)"
 msgstr ""
 
-#: models.py:48
+#: models.py:67
 msgid "number of displayed events"
 msgstr ""
 
-#: models.py:58
+#: models.py:77
 msgid "Ical Widget"
 msgstr ""
 
-#: models.py:59
+#: models.py:78
 msgid "Ical Widgets"
 msgstr ""
 
@@ -61,14 +69,26 @@ msgstr ""
 msgid "Current Events"
 msgstr ""
 
-#: templates/dashboardfeeds/ical.html:14
+#: templates/dashboardfeeds/ical.html:11
+msgid "No events to display"
+msgstr ""
+
+#: templates/dashboardfeeds/ical.html:17
 msgid "Further events"
 msgstr ""
 
-#: templates/dashboardfeeds/rss.html:8
+#: templates/dashboardfeeds/rss.html:19 templates/dashboardfeeds/rss.html:21
 msgid "title image"
 msgstr ""
 
-#: templates/dashboardfeeds/rss.html:21
+#: templates/dashboardfeeds/rss.html:23
+msgid "no feed image"
+msgstr ""
+
+#: templates/dashboardfeeds/rss.html:34
+msgid "Read more"
+msgstr ""
+
+#: templates/dashboardfeeds/rss.html:38
 msgid "Further articles"
 msgstr ""

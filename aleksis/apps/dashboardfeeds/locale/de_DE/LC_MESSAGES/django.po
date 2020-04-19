@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-01 13:22+0200\n"
 "PO-Revision-Date: 2020-04-29 12:02+0000\n"
-"Last-Translator: Tom Teichler <tom.teichler@teckids.org>\n"
+"Last-Translator: Jonathan Weth <teckids@jonathanweth.de>\n"
 "Language-Team: German <https://translate.edugit.org/projects/aleksis/"
 "aleksis-app-dashboardfeeds/de/>\n"
 "Language: de_DE\n"
@@ -29,7 +29,7 @@ msgstr "Basis-URL"
 
 #: models.py:19
 msgid "index url of the news website (as link for users)"
-msgstr ""
+msgstr "Startseite der Website (als Link für Nutzer)"
 
 #: models.py:20
 msgid "Rss Source"
@@ -37,7 +37,7 @@ msgstr "RSS-Quelle"
 
 #: models.py:22
 msgid "Text Only RSS Feed"
-msgstr ""
+msgstr "RSS-Feed nur mit Text"
 
 #: models.py:57
 msgid "RSS Widget"
@@ -53,7 +53,7 @@ msgstr "iCal-URL"
 
 #: models.py:66
 msgid "index url of the calendar (as link for users)"
-msgstr ""
+msgstr "URL der Kalenderansicht (als Link für Nutzer)"
 
 #: models.py:67
 msgid "number of displayed events"
@@ -73,11 +73,11 @@ msgstr "Aktuelle Ereignisse"
 
 #: templates/dashboardfeeds/ical.html:11
 msgid "No events to display"
-msgstr ""
+msgstr "Keine Termine zum Anzeigen"
 
 #: templates/dashboardfeeds/ical.html:17
 msgid "Further events"
-msgstr ""
+msgstr "Weitere Termine"
 
 #: templates/dashboardfeeds/rss.html:19 templates/dashboardfeeds/rss.html:21
 msgid "title image"
@@ -85,7 +85,7 @@ msgstr "Titelbild"
 
 #: templates/dashboardfeeds/rss.html:23
 msgid "no feed image"
-msgstr ""
+msgstr "Kein Bild vorhanden"
 
 #: templates/dashboardfeeds/rss.html:34
 msgid "Read more"

@@ -16,6 +16,7 @@ Licence
 
 ::
 
+  Copyright © 2020 Dominik George <dominik.george@teckids.org>
   Copyright © 2020 Julian Leucker <leuckerj@gmail.com>
 
   Licenced under the EUPL, version 1.2 or later

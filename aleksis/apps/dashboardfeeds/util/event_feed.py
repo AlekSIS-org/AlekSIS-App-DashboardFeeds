@@ -5,7 +5,7 @@ from django.utils import timezone, formats
 from django.core.cache import cache
 
 from ics import Calendar
-from memoize import memoize
+from cache_memoize import cache_memoize
 import requests
 
 logger = logging.getLogger(__name__)
@@ -64,7 +64,7 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
     return events
 
 
-@memoize(timeout=300)
+@cache_memoize(300)
 def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
     try:
         content = requests.get(calendar_url, timeout=3)

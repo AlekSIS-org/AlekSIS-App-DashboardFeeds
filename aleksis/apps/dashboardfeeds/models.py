@@ -14,14 +14,16 @@ from .util.event_feed import get_current_events_with_cal
 class RSSFeedWidget(DashboardWidget):
     template = "dashboardfeeds/rss.html"
 
-    url = models.URLField(verbose_name=_("RSS Url"))
-    base_url = models.URLField(verbose_name=_("Base URL"),
-                               help_text=_("index url of the news website (as link for users)"))
-    rss_source = models.ForeignKey(Source, verbose_name=_("Rss Source"), on_delete=models.CASCADE, editable=False,
+    url = models.URLField(verbose_name=_("RSS feed source URL"))
+    base_url = models.URLField(verbose_name=_("Base URL of related website"),
+                               help_text=_("The widget will have a link to visit a related website to read more news"))
+    text_only = models.BooleanField(verbose_name=_("Text only"), help_text=_("Do not show an image to depict the news item"), default=False)
+
+    rss_source = models.ForeignKey(Source, on_delete=models.CASCADE, editable=False,
                                    null=True)
-    text_only = models.BooleanField(verbose_name=_("Text Only RSS Feed"), default=False)
 
     def save(self, *args, **kwargs):
+        # Update the linked RSS source object to transfer data into django-feeds
         if not self.rss_source:
             source = Source()
             source.name = self.title
@@ -38,7 +40,7 @@ class RSSFeedWidget(DashboardWidget):
         self.rss_source.live = self.active
         self.rss_source.save()
 
-        super().save()
+        super().save(*args, **kwargs)
 
     def get_context(self):
         posts = self.rss_source.posts.all().order_by("-created")
@@ -61,10 +63,10 @@ class RSSFeedWidget(DashboardWidget):
 class ICalFeedWidget(DashboardWidget):
     template = "dashboardfeeds/ical.html"
 
-    url = models.URLField(verbose_name=_("iCal URL"))
-    base_url = models.URLField(verbose_name=_("Base URL"),
-                               help_text=_("index url of the calendar (as link for users)"))
-    events_count = models.IntegerField(verbose_name=_("number of displayed events"), default=5)
+    url = models.URLField(verbose_name=_("iCalendar URL"))
+    base_url = models.URLField(verbose_name=_("Base URL of related calendar"),
+                               help_text=_("The widget will have a link to visit a related website to see more events"))
+    events_count = models.IntegerField(verbose_name=_("Number of displayed events"), default=5)
 
     def get_context(self):
         feed = {
@@ -74,5 +76,5 @@ class ICalFeedWidget(DashboardWidget):
         return feed
 
     class Meta:
-        verbose_name = _("Ical Widget")
-        verbose_name_plural = _("Ical Widgets")
+        verbose_name = _("iCalendar Widget")
+        verbose_name_plural = _("iCalendar Widgets")

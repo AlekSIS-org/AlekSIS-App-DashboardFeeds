@@ -38,21 +38,20 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
 
             if not event.all_day:
                 # No all day event
-                formatted += " " + begin_time_formatted
+                formatted += f" {begin_time_formatted}"
 
             if event.begin.time != event.end.time():
                 # Event has an end time
-                formatted += " – " + end_time_formatted
+                formatted += f" – {end_time_formatted}"
 
         else:
             # Event is on multiple days
             if event.all_day:
                 # Event is all day
-                formatted = "{} – {}".format(begin_date_formatted, end_date_formatted)
+                formatted = f"{begin_date_formatted} – {end_date_formatted}"
             else:
                 # Event has begin and end times
-                formatted = "{} {} – {} {}".format(begin_date_formatted, begin_time_formatted, end_date_formatted,
-                                                   end_time_formatted)
+                formatted = f"{begin_date_formatted} {begin_time_formatted} – {end_date_formatted} {end_time_formatted}"
 
         events.append({
             "name": event.name,

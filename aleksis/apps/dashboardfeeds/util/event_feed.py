@@ -16,7 +16,6 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
     :param limit: Count of events
     :return: List of upcoming events
     """
-
     i: int = 0
     events: list = []
     for event in calendar.timeline.start_after(timezone.now()):
@@ -69,11 +68,11 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
 
 @cache_memoize(300)
 def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
-    """
+    """Get current events.
+
     Download an iCalendar file from an URL, parse using the ICS library
     and return a limited number of events.
     """
-
     try:
         content = requests.get(calendar_url, timeout=3)
     except requests.RequestException as e:

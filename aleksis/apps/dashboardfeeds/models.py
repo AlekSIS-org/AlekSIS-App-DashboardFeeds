@@ -33,17 +33,13 @@ class RSSFeedWidget(DashboardWidget):
     def save(self, *args, **kwargs):
         # Update the linked RSS source object to transfer data into django-feeds
         if not self.rss_source:
-            source = Source()
-            source.name = self.title
-            source.feed_url = self.url
-            source.site_url = self.base_url
+            self.rss_source = Source()
+        self.rss_source.name = self.title
+        self.rss_source.feed_url = self.url
+        self.rss_source.site_url = self.base_url
 
-            source.last_success = datetime.datetime.utcnow()
-            source.last_change = datetime.datetime.utcnow()
-
-            source.save()
-
-            self.rss_source = source
+        self.rss_source.last_success = datetime.datetime.utcnow()
+        self.rss_source.last_change = datetime.datetime.utcnow()
 
         self.rss_source.live = self.active
         self.rss_source.save()

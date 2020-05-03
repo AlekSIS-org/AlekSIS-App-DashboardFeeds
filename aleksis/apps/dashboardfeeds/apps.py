@@ -3,9 +3,7 @@ from aleksis.core.util.apps import AppConfig
 
 class DefaultConfig(AppConfig):
     name = "aleksis.apps.dashboardfeeds"
-    verbose_name = (
-        "AlekSIS — Dashboard Feeds (Feeds from external resources as dashboard widgets)"
-    )
+    verbose_name = "AlekSIS — Dashboard Feeds (Feeds from external resources as dashboard widgets)"
 
     urls = {
         "Repository": "https://edugit.org/AlekSIS/official/AlekSIS-App-DashboardFeeds/",

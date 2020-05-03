@@ -49,8 +49,10 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
                 formatted = f"{begin_date_formatted} – {end_date_formatted}"
             else:
                 # Event has begin and end times
-                formatted = (f"{begin_date_formatted} {begin_time_formatted}"
-                             " - {end_date_formatted} {end_time_formatted}")
+                formatted = (
+                    f"{begin_date_formatted} {begin_time_formatted}"
+                    " - {end_date_formatted} {end_time_formatted}"
+                )
 
         events.append(
             {

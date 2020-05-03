@@ -1,12 +1,12 @@
 import logging
 import re
 
-from django.utils import timezone, formats
 from django.core.cache import cache
+from django.utils import formats, timezone
 
-from ics import Calendar
-from cache_memoize import cache_memoize
 import requests
+from cache_memoize import cache_memoize
+from ics import Calendar
 
 logger = logging.getLogger(__name__)
 
@@ -54,12 +54,14 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
                 # Event has begin and end times
                 formatted = f"{begin_date_formatted} {begin_time_formatted} – {end_date_formatted} {end_time_formatted}"
 
-        events.append({
-            "name": event.name,
-            "begin_timestamp": event.begin.timestamp,
-            "end_timestamp": event.end.timestamp,
-            "date_formatted": formatted,
-        })
+        events.append(
+            {
+                "name": event.name,
+                "begin_timestamp": event.begin.timestamp,
+                "end_timestamp": event.end.timestamp,
+                "date_formatted": formatted,
+            }
+        )
 
     return events
 

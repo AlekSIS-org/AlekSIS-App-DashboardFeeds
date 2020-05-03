@@ -9,7 +9,7 @@ class DefaultConfig(AppConfig):
         "Repository": "https://edugit.org/AlekSIS/official/AlekSIS-App-DashboardFeeds/",
     }
     licence = "EUPL-1.2+"
-    copyright = (
+    copyright_info = (
         ([2020], "Dominik George", "dominik.george@teckids.org"),
         ([2020], "Julian Leucker", "leuckeju@katharineum.de"),
     )

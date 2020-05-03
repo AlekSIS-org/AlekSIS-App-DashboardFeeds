@@ -1,4 +1,4 @@
-#noqa
+# noqa
 
 from django.contrib import admin
 

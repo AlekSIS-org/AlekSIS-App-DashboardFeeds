@@ -7,22 +7,43 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dashboardfeeds', '0001_initial'),
+        ("dashboardfeeds", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ICalFeedWidget',
+            name="ICalFeedWidget",
             fields=[
-                ('dashboardwidget_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='core.DashboardWidget')),
-                ('url', models.URLField(verbose_name='iCal URL')),
-                ('base_url', models.URLField(help_text='index url of the calendar (as link for users)', verbose_name='Base URL')),
-                ('events_count', models.IntegerField(default=5, verbose_name='number of displayed events')),
+                (
+                    "dashboardwidget_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="core.DashboardWidget",
+                    ),
+                ),
+                ("url", models.URLField(verbose_name="iCal URL")),
+                (
+                    "base_url",
+                    models.URLField(
+                        help_text="index url of the calendar (as link for users)",
+                        verbose_name="Base URL",
+                    ),
+                ),
+                (
+                    "events_count",
+                    models.IntegerField(
+                        default=5, verbose_name="number of displayed events"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Ical Widget',
-                'verbose_name_plural': 'Ical Widgets',
+                "verbose_name": "Ical Widget",
+                "verbose_name_plural": "Ical Widgets",
             },
-            bases=('core.dashboardwidget',),
+            bases=("core.dashboardwidget",),
         ),
     ]

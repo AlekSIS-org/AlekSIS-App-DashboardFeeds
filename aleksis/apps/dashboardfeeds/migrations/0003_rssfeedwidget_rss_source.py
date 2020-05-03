@@ -7,14 +7,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('feeds', '0006_auto_20190901_1644'),
-        ('dashboardfeeds', '0002_icalfeedwidget'),
+        ("feeds", "0006_auto_20190901_1644"),
+        ("dashboardfeeds", "0002_icalfeedwidget"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='rssfeedwidget',
-            name='rss_source',
-            field=models.ForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, to='feeds.Source', verbose_name='Rss Source'),
+            model_name="rssfeedwidget",
+            name="rss_source",
+            field=models.ForeignKey(
+                editable=False,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="feeds.Source",
+                verbose_name="Rss Source",
+            ),
         ),
     ]

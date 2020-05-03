@@ -1,7 +1,5 @@
 import logging
-import re
 
-from django.core.cache import cache
 from django.utils import formats, timezone
 
 import requests
@@ -12,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_current_events(calendar: Calendar, limit: int = 5) -> list:
-    """ Get upcoming events from a calendar (ICS) object
+    """Get upcoming events from a calendar (ICS) object.
 
     :param calendar: The calendar object
     :param limit: Count of events
@@ -52,7 +50,10 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
                 formatted = f"{begin_date_formatted} – {end_date_formatted}"
             else:
                 # Event has begin and end times
-                formatted = f"{begin_date_formatted} {begin_time_formatted} – {end_date_formatted} {end_time_formatted}"
+                formatted = f(
+                    "{begin_date_formatted} {begin_time_formatted} –"
+                    "{end_date_formatted} {end_time_formatted}"
+                )
 
         events.append(
             {
@@ -68,8 +69,9 @@ def get_current_events(calendar: Calendar, limit: int = 5) -> list:
 
 @cache_memoize(300)
 def get_current_events_with_cal(calendar_url: str, limit: int = 5) -> list:
-    """ Download an iCalendar file from an URL, parse using the ICS library
-    and return a limited number of events
+    """
+    Download an iCalendar file from an URL, parse using the ICS library
+    and return a limited number of events.
     """
 
     try:

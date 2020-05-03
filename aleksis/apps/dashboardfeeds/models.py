@@ -1,5 +1,4 @@
 import datetime
-from typing import Optional
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -17,7 +16,9 @@ class RSSFeedWidget(DashboardWidget):
     url = models.URLField(verbose_name=_("RSS feed source URL"))
     base_url = models.URLField(
         verbose_name=_("Base URL of related website"),
-        help_text=_("The widget will have a link to visit a related website to read more news"),
+        help_text=_(
+            "The widget will have a link to visit a related website to read more news"
+        ),
     )
     text_only = models.BooleanField(
         verbose_name=_("Text only"),
@@ -25,7 +26,9 @@ class RSSFeedWidget(DashboardWidget):
         default=False,
     )
 
-    rss_source = models.ForeignKey(Source, on_delete=models.CASCADE, editable=False, null=True)
+    rss_source = models.ForeignKey(
+        Source, on_delete=models.CASCADE, editable=False, null=True
+    )
 
     def save(self, *args, **kwargs):
         # Update the linked RSS source object to transfer data into django-feeds
@@ -71,9 +74,13 @@ class ICalFeedWidget(DashboardWidget):
     url = models.URLField(verbose_name=_("iCalendar URL"))
     base_url = models.URLField(
         verbose_name=_("Base URL of related calendar"),
-        help_text=_("The widget will have a link to visit a related website to see more events"),
+        help_text=_(
+            "The widget will have a link to visit a related website to see more events"
+        ),
     )
-    events_count = models.IntegerField(verbose_name=_("Number of displayed events"), default=5)
+    events_count = models.IntegerField(
+        verbose_name=_("Number of displayed events"), default=5
+    )
 
     def get_context(self):
         feed = {

@@ -9,21 +9,37 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('core', '0009_dashboard_widget'),
+        ("core", "0009_dashboard_widget"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='RSSFeedWidget',
+            name="RSSFeedWidget",
             fields=[
-                ('dashboardwidget_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='core.DashboardWidget')),
-                ('url', models.URLField(verbose_name='RSS Url')),
-                ('base_url', models.URLField(help_text='index url of the news website (as link for users)', verbose_name='Base URL')),
+                (
+                    "dashboardwidget_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="core.DashboardWidget",
+                    ),
+                ),
+                ("url", models.URLField(verbose_name="RSS Url")),
+                (
+                    "base_url",
+                    models.URLField(
+                        help_text="index url of the news website (as link for users)",
+                        verbose_name="Base URL",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'RSS Widget',
-                'verbose_name_plural': 'RSS Widgets',
+                "verbose_name": "RSS Widget",
+                "verbose_name_plural": "RSS Widgets",
             },
-            bases=('core.dashboardwidget',),
+            bases=("core.dashboardwidget",),
         ),
     ]

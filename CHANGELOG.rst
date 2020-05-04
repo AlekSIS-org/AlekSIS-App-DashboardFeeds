@@ -1,13 +1,14 @@
 Changelog
 =========
 
-`1.0`_
+`2.0a2`_
 ------
 
 New features
 ~~~~~~~~~~~~
 
-* Initial release
+* Allow adding iCal widgets to dashboard
+* Allow adding RSS widgets to dashboard
 
 Bugfixes
 ~~~~~~~~
@@ -19,4 +20,4 @@ Minor changes
 
 * None
 
-_`1.0`: https://edugit.org/AlekSIS/Official/AlekSIS-App-DashboardFeeds/-/tags/1.0
+_`2.0a2`: https://edugit.org/AlekSIS/Official/AlekSIS-App-DashboardFeeds/-/tags/2.0a2

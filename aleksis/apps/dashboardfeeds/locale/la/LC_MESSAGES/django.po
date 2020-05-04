@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-01 13:22+0200\n"
+"POT-Creation-Date: 2020-05-04 15:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,63 +17,69 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:17
-msgid "RSS Url"
+#: models.py:16
+msgid "RSS feed source URL"
 msgstr ""
 
-#: models.py:18 models.py:65
-msgid "Base URL"
+#: models.py:18
+msgid "Base URL of related website"
 msgstr ""
 
 #: models.py:19
-msgid "index url of the news website (as link for users)"
-msgstr ""
-
-#: models.py:20
-msgid "Rss Source"
+msgid ""
+"The widget will have a link to visit a related website to read more news"
 msgstr ""
 
 #: models.py:22
-msgid "Text Only RSS Feed"
+msgid "Text only"
 msgstr ""
 
-#: models.py:57
+#: models.py:23
+msgid "Do not show an image to depict the news item"
+msgstr ""
+
+#: models.py:59
 msgid "RSS Widget"
 msgstr ""
 
-#: models.py:58
+#: models.py:60
 msgid "RSS Widgets"
 msgstr ""
 
-#: models.py:64
-msgid "iCal URL"
-msgstr ""
-
 #: models.py:66
-msgid "index url of the calendar (as link for users)"
+msgid "iCalendar URL"
 msgstr ""
 
-#: models.py:67
-msgid "number of displayed events"
+#: models.py:68
+msgid "Base URL of related calendar"
 msgstr ""
 
-#: models.py:77
-msgid "Ical Widget"
+#: models.py:69
+msgid ""
+"The widget will have a link to visit a related website to see more events"
 msgstr ""
 
-#: models.py:78
-msgid "Ical Widgets"
+#: models.py:71
+msgid "Number of displayed events"
+msgstr ""
+
+#: models.py:81
+msgid "iCalendar Widget"
+msgstr ""
+
+#: models.py:82
+msgid "iCalendar Widgets"
 msgstr ""
 
 #: templates/dashboardfeeds/ical.html:5
 msgid "Current Events"
 msgstr ""
 
-#: templates/dashboardfeeds/ical.html:11
+#: templates/dashboardfeeds/ical.html:12
 msgid "No events to display"
 msgstr ""
 
-#: templates/dashboardfeeds/ical.html:17
+#: templates/dashboardfeeds/ical.html:18
 msgid "Further events"
 msgstr ""
 
@@ -81,14 +87,14 @@ msgstr ""
 msgid "title image"
 msgstr ""
 
-#: templates/dashboardfeeds/rss.html:23
+#: templates/dashboardfeeds/rss.html:24
 msgid "no feed image"
 msgstr ""
 
-#: templates/dashboardfeeds/rss.html:34
+#: templates/dashboardfeeds/rss.html:36
 msgid "Read more"
 msgstr ""
 
-#: templates/dashboardfeeds/rss.html:38
+#: templates/dashboardfeeds/rss.html:40
 msgid "Further articles"
 msgstr ""

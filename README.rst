@@ -9,7 +9,8 @@ This is an application for use with the `AlekSIS`_ platform.
 Features
 --------
 
-The author of this app did not describe it yet.
+* Add RSS widgets to dashboard
+* Add iCal widgets to dashboard
 
 Licence
 -------

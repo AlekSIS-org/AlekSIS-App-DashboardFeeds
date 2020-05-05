@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "AlekSIS-App-DashboardFeeds"
-version = "2.0a2"
+version = "2.0a3.dev0"
 packages = [
     { include = "aleksis" }
 ]
@@ -26,7 +26,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-AlekSIS = "^2.0a2"
+AlekSIS = "^2.0a3.dev0"
 feedparser = "^5.2.1"
 django-feed-reader = "^0.2.1"
 ics = "^0.7"

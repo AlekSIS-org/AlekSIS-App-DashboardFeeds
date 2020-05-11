@@ -1,5 +1,5 @@
 AlekSIS (School Information System) — App Dashboard Feeds (Include feeds from external resources as widgets on dashboard)
-==================================================================================================
+=========================================================================================================================
 
 AlekSIS
 -------

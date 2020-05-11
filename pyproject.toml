@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "AlekSIS-App-DashboardFeeds"
-version = "2.0a2"
+version = "2.0a3.dev0"
 packages = [
     { include = "aleksis" }
 ]

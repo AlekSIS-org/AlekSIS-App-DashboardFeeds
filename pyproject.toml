@@ -27,7 +27,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.7"
 AlekSIS = "^2.0a2"
-feedparser = "^5.2.1"
+feedparser = "^6.0.0"
 django-feed-reader = "^0.2.1"
 ics = "^0.7"
 

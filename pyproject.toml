@@ -34,7 +34,7 @@ python = "^3.7"
 feedparser = "^6.0.0"
 django-feed-reader = "^0.2.1"
 ics = "^0.7"
-aleksis-core = "^2.0a3"
+aleksis-core = "^2.0a3.dev0"
 
 [tool.poetry.dev-dependencies]
 sphinx = "^3.0"

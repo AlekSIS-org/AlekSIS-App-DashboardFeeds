@@ -64,6 +64,10 @@ pytest-sugar = "^0.9.2"
 [tool.poetry.plugins."aleksis.app"]
 dashboardfeeds = "aleksis.apps.dashboardfeeds.apps:DefaultConfig"
 
+[tool.black]
+line-length = 100
+exclude = "/migrations/"
+
 [build-system]
 requires = ["poetry>=1.0"]
 build-backend = "poetry.masonry.api"

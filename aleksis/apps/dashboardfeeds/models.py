@@ -2,6 +2,8 @@ import datetime
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 
 from feeds.models import Source
 
@@ -58,6 +60,15 @@ class RSSFeedWidget(DashboardWidget):
     class Meta:
         verbose_name = _("RSS Widget")
         verbose_name_plural = _("RSS Widgets")
+
+
+@receiver(post_delete, sender=RSSFeedWidget)
+def delete_rss_source_reverse(sender, **kwargs):
+    try:
+        if kwargs['instance'].rss_source:
+            kwargs['instance'].rss_source.delete()
+    except Source.DoesNotExist:  # Avoid endless looping
+        pass
 
 
 class ICalFeedWidget(DashboardWidget):

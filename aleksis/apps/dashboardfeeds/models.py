@@ -44,7 +44,7 @@ class RSSFeedWidget(DashboardWidget):
 
         super().save(*args, **kwargs)
 
-    def get_context(self):
+    def get_context(self, request):
         posts = self.rss_source.posts.all().order_by("-created")
         post = posts[0] if len(posts) > 0 else None
         feed = {
@@ -81,7 +81,7 @@ class ICalFeedWidget(DashboardWidget):
     )
     events_count = models.IntegerField(verbose_name=_("Number of displayed events"), default=5)
 
-    def get_context(self):
+    def get_context(self, request):
         feed = {
             "base_url": self.base_url,
             "feed_events": get_current_events_with_cal(self.url, self.events_count),
